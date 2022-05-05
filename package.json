@@ -1,0 +1,23 @@
+{
+  "name": "pfe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/style.css -o ./dist/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nabildroid/pfe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nabildroid/pfe/issues"
+  },
+  "homepage": "https://github.com/nabildroid/pfe#readme",
+  "dependencies": {
+    "tailwindcss": "^3.0.24"
+  }
+}
