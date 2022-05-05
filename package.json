@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tailwind": "npx tailwindcss -i ./src/style.css -o ./dist/output.css --watch",
-    "build": "npx tailwindcss -o ./dist/output.css --minify"
+    "build": "npx tailwindcss -o ./dist/output.css --minify; cp src/* ./dist; cp assets ./dist -r"
   },
   "repository": {
     "type": "git",
