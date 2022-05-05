@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formation PHP</title>
+    <link href="/dist/output.css" rel="stylesheet" />
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col">
+      <div class="max-w-4xl w-full mx-auto">
+        <nav class="py-3 flex justify-between items-center">
+          <img src="/assets/logo.png" class="h-10 aspect-video" />
+
+          <div class="flex items-center space-x-6">
+            <a
+              href="#"
+              class="text-sm font-medium text-neutral-800 px-2 py-1 rounded-sm hover:text-blue-900 hover:bg-blue-200"
+              >Accueil</a
+            >
+            <a
+              href="http://cerist.dz/index.php/fr/apropsducerist-2"
+              class="text-sm font-medium text-neutral-800 px-2 py-1 rounded-sm hover:text-blue-900 hover:bg-blue-200"
+              >A propos</a
+            >
+            <a
+              href="#"
+              class="text-sm font-medium border border-neutral-300 text-neutral-800 px-2 py-1 rounded-sm hover:text-blue-900 hover:bg-blue-200"
+              >Contact</a
+            >
+          </div>
+        </nav>
+      </div>
+
+      <div
+        class="flex-none md:flex-1 py-2 md:py-0 flex items-center justify-center w-full bg-blue-700 from-slate-300 to-blue-700 md:bg-gradient-to-r"
+      >
+        <div
+          class="md:space-x-12 h-full max-w-4xl w-full mx-auto block md:flex items-center justify-between"
+        >
+          <div
+            class="flex-1 flex py-4 md:py-0 md:block flex-col items-center justify-center space-y-20"
+          >
+            <h1 class="text-5xl max-w-xs text-white drop-shadow-md">
+              Learn to Program: The Fundamentals
+            </h1>
+            <a
+              href="#"
+              target="_blank"
+              class="flex hover:bg-blue-800 w-52 justify-center text-md py-2 space-x-2 items-center rounded-sm bg-blue-900 text-white"
+            >
+              <img src="/assets/pdf.png" class="w-6 h-6" />
+              <span>Fiche Technique</span>
+            </a>
+          </div>
+          <div class="flex-1">
+            <form
+              class="rounded-sm w-full max-w-sm bg-white shadow-lg mx-auto md:mx-0"
+            >
+              <div class="p-4">
+                <h2 class="text-center text-xl text-blue-900">
+                  Bulletin d’Inscription
+                </h2>
+                <div class="mt-4 space-y-2">
+                  <div class="space-y-1">
+                    <label class="text-slate-500 text-sm" for="name"
+                      >Nom et Prénom</label
+                    >
+                    <input
+                      required
+                      class="outline-none focus:ring-blue-700 focus:ring-2 text-blue-900 w-full p-1 rounded-md border border-gray-300"
+                      id="name"
+                      type="text"
+                      autocomplete="name"
+                    />
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-slate-500 text-sm" for="Fonction"
+                      >Fonction</label
+                    >
+                    <input
+                      required
+                      class="outline-none focus:ring-blue-700 focus:ring-2 text-blue-900 w-full p-1 rounded-md border border-gray-300"
+                      id="Fonction"
+                      type="text"
+                      autocomplete="work"
+                    />
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-slate-500 text-sm" for="Organisme"
+                      >Organisme</label
+                    >
+                    <input
+                      required
+                      class="outline-none focus:ring-blue-700 focus:ring-2 text-blue-900 w-full p-1 rounded-md border border-gray-300"
+                      id="Organisme"
+                      type="text"
+                      autocomplete="organization"
+                    />
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-slate-500 text-sm" for="Email"
+                      >Email</label
+                    >
+                    <input
+                      required
+                      class="outline-none focus:ring-blue-700 focus:ring-2 text-blue-900 w-full p-1 rounded-md border border-gray-300"
+                      id="Email"
+                      type="email"
+                      autocomplete="email"
+                    />
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-slate-500 text-sm" for="tel"
+                      >Téléphone</label
+                    >
+                    <input
+                      required
+                      class="outline-none focus:ring-blue-700 focus:ring-2 text-blue-900 w-full p-1 rounded-md border border-gray-300"
+                      id="tel"
+                      type="tel"
+                      autocomplete="tel"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="py-3 w-full text-center bg-slate-300">
+                <button
+                  type="submit"
+                  class="px-8 py-1 rounded-sm bg-blue-900 hover:bg-blue-800 text-white"
+                >
+                  envoyer
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
