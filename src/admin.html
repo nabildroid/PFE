@@ -9,7 +9,7 @@
     <link href="./output.css" rel="stylesheet" />
   </head>
   <body class="bg-blue-50/80">
-    <div class=" pb-4 ">
+    <div class="pb-4">
       <div class="max-w-4xl mx-auto">
         <nav class="py-3 px-3 md:px-0 flex justify-between items-center">
           <img src="/assets/logo.png" class="-ml-2 h-10 aspect-video" />
@@ -51,7 +51,7 @@
 
           <div class="mt-4 w-full">
             <div
-              class=" mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5  md:mx-0 md:rounded-sm"
+              class="mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:mx-0 md:rounded-sm"
             >
               <table class="min-w-full divide-y divide-gray-300">
                 <thead class="bg-gray-50">
@@ -100,13 +100,49 @@
                     <td
                       class="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 lg:table-cell"
                     >
-                    <span class="font-mono font-bold">4</span> groupes
-
+                      <span class="font-mono font-bold">4</span> groupes
                     </td>
                     <td
                       class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
                     >
-                      <span class="inline-block px-2 leading-5 text-xs font-bold text-green-600 rounded-full bg-green-100 -ml-2">Active</span>
+                      <span
+                        class="inline-block px-2 leading-5 text-xs font-bold text-green-600 rounded-full bg-green-100 -ml-2"
+                        >Active</span
+                      >
+                    </td>
+                    <td
+                      class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
+                    >
+                      <a
+                        href="./active.html"
+                        class="px-2 py-1 rounded-md border border-gray-300 hover:text-blue-600 hover:bg-blue-200 text-gray-600"
+                        >afficher<span class="sr-only">Afficher</span></a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-900 sm:pl-6"
+                    >
+                      Excel
+                    </td>
+                    <td
+                      class="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell"
+                    >
+                      <span class="font-mono font-bold">25</span> apprenants
+                    </td>
+                    <td
+                      class="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 lg:table-cell"
+                    >
+                      <span class="font-mono font-bold">4</span> groupes
+                    </td>
+                    <td
+                      class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                    >
+                      <span
+                        class="inline-block px-2 leading-5 text-xs font-bold text-green-600 rounded-full bg-green-100 -ml-2"
+                        >Active</span
+                      >
                     </td>
                     <td
                       class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
@@ -132,45 +168,15 @@
                     <td
                       class="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 lg:table-cell"
                     >
-                    <span class="font-mono font-bold">4</span> groupes
-
+                      <span class="font-mono font-bold">4</span> groupes
                     </td>
                     <td
                       class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
                     >
-                      <span class="inline-block px-2 leading-5 text-xs font-bold text-green-600 rounded-full bg-green-100 -ml-2">Active</span>
-                    </td>
-                    <td
-                      class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
-                    >
-                      <a
-                        href="#"
-                        class="px-2 py-1 rounded-md border border-gray-300 hover:text-blue-600 hover:bg-blue-200 text-gray-600"
-                        >afficher<span class="sr-only">Afficher</span></a
+                      <span
+                        class="inline-block px-2 leading-5 text-xs font-bold text-blue-600 rounded-full bg-blue-100 -ml-2"
+                        >Ouvert</span
                       >
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-900 sm:pl-6"
-                    >
-                      Excel
-                    </td>
-                    <td
-                      class="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell"
-                    >
-                      <span class="font-mono font-bold">25</span> apprenants
-                    </td>
-                    <td
-                      class="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 lg:table-cell"
-                    >
-                    <span class="font-mono font-bold">4</span> groupes
-
-                    </td>
-                    <td
-                      class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                    >
-                      <span class="inline-block px-2 leading-5 text-xs font-bold text-blue-600 rounded-full bg-blue-100 -ml-2">Ouvert</span>
                     </td>
                     <td
                       class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
@@ -196,13 +202,15 @@
                     <td
                       class="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 lg:table-cell"
                     >
-                    <span class="font-mono font-bold">4</span> groupes
-
+                      <span class="font-mono font-bold">4</span> groupes
                     </td>
                     <td
                       class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
                     >
-                      <span class="inline-block px-2 leading-5 text-xs font-bold text-amber-600 rounded-full bg-amber-100 -ml-2">Archive</span>
+                      <span
+                        class="inline-block px-2 leading-5 text-xs font-bold text-amber-600 rounded-full bg-amber-100 -ml-2"
+                        >Archive</span
+                      >
                     </td>
                     <td
                       class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
