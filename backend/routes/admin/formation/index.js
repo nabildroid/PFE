@@ -1,8 +1,8 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const inscription = require("./inscription");
-const presence = require("./presence");
+import inscription from "./inscription";
+import presence from "./presence";
 
 // create new Fromation
 router.post("/new", (req, res) => {
@@ -29,4 +29,4 @@ router.use("/:id/presence", presence);
 
 
 
-module.exports = router;
+export default router;

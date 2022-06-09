@@ -1,8 +1,8 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const salles = require("./salle");
-const formation = require("./formation");
+import salles from "./salle";
+import formation from "./formation";
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -12,4 +12,4 @@ router.get("/", function (req, res, next) {
 router.use("/salles", salles);
 router.use("/formation", formation);
 
-module.exports = router;
+export default router;

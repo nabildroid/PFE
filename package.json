@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "tailwind": "npx tailwindcss -i ./src/style.css -o ./dist/output.css --watch",
     "build": "npx tailwindcss -o ./dist/output.css --minify; cp src/* ./dist; cp assets ./dist -r"
