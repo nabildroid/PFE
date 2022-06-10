@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentification</title>
+
+    <link href="/dist/output.css" rel="stylesheet" />
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body class="bg-blue-50/80">
+    <div class="w-full min-h-screen flex pt-12 md:pt-0 items-start md:items-center justify-center">
+      <form class="block max-w-xs w-full  py-4 px-4 rounded shadow bg-white">
+        <div class="text-center w-full">
+          <img src="/assets/logo.png" class="inline-block -ml-2 h-12" />
+        </div>
+        <h1 class="text-blue-800 text-2xl mt-2 text-center font-bold">Login</h1>
+        <div class=" mt-4 space-y-2">
+          <div class="space-y-1">
+            <label class="text-slate-500 text-sm" for="name"
+              >Nom d'utilisateur</label
+            >
+            <input
+              required
+              class="outline-none focus:ring-blue-700 focus:ring-2 text-blue-900 w-full p-1 rounded-md border border-gray-300"
+              id="name"
+              type="text"
+              autocomplete="name"
+            />
+          </div>
+          <div class="space-y-1">
+            <label class="text-slate-500 text-sm" for="pass"
+              >Mot de pass</label
+            >
+            <input
+              required
+              class="outline-none focus:ring-blue-700 focus:ring-2 text-blue-900 w-full p-1 rounded-md border border-gray-300"
+              id="pass"
+              type="password"
+              autocomplete="current-password"
+            />
+          </div>
+        </div>
+        <button type="submit" class="w-full hover:bg-blue-600 bg-blue-500 text-white py-1 mt-4 rounded">
+            Entre
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
