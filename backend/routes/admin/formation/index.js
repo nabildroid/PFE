@@ -5,13 +5,16 @@ import inscription from "./inscription";
 import presence from "./presence";
 
 // create new Fromation
-router.post("/new", (req, res) => {
+router.get("/new", (req, res) => {
     const { name, title, description } = req.body;
+    res.send("hello world");
 });
 
 // on formation selected
 router.get("/:id", (req, res) => {
+    console.log("openeing a formation!!");
     const type = "open" | "archived" | "active";
+    res.send("hello world");
 });
 
 // update the formation

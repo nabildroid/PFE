@@ -49,6 +49,32 @@ export function getFormations() {
     return { formations, categories };
 }
 
+export function getAdminForamtion() {
+    return [
+        {
+            id: 1,
+            title: "Excel",
+            students: 25,
+            groups: 3,
+            state: "active",
+        },
+        {
+            id: 2,
+            title: "PowerPoint",
+            students: 500,
+            groups: 10,
+            state: "ouvert",
+        },
+        {
+            id: 3,
+            title: "PHP",
+            students: 50,
+            groups: 3,
+            state: "archive",
+        },
+    ];
+}
+
 // get one formation
 export function getFormation(id) {
     return {

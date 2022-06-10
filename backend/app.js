@@ -27,6 +27,9 @@ app.use(
         secret: "RI_IS_DIFFUCT_MODULE",
         resave: false,
         saveUninitialized: true,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24,
+        },
     })
 );
 
