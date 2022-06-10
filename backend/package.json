@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-
   "scripts": {
-    "start": "node --experimental-specifier-resolution=node app.js"
+    "start": "node --experimental-specifier-resolution=node app.js",
+    "dev": "nodemon --experimental-specifier-resolution=node app.js"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
@@ -17,6 +17,7 @@
     "express-session": "^1.17.3",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.16"
   }
 }
