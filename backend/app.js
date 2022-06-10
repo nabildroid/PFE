@@ -1,9 +1,8 @@
 import createError from "http-errors";
 import express from "express";
+import session from "express-session";
 import path from "path";
-import cookieParser from "cookie-parser";
 import logger from "morgan";
-
 
 import indexRouter from "./routes";
 import inscriptionRouter from "./routes/inscription";
@@ -19,15 +18,23 @@ app.set("view engine", "ejs");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join("./", "public")));
 
-// routes
+// authentification
 
-app.use("/", indexRouter);
-app.use("/", inscriptionRouter);
+app.use(
+    session({
+        secret: "RI_IS_DIFFUCT_MODULE",
+        resave: false,
+        saveUninitialized: true,
+    })
+);
+
+// routes
 app.use("/login", loginRouter);
 app.use("/admin", adminRouter);
+app.use("/", indexRouter);
+app.use("/", inscriptionRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -45,10 +52,8 @@ app.use(function (err, req, res, next) {
     res.render("error");
 });
 
-
-app.listen(3000,()=>{
+app.listen(3000, () => {
     console.log(`listening to port 3000`);
-})
+});
+
 export default app;
-
-
