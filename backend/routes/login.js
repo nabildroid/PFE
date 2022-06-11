@@ -1,14 +1,24 @@
 import express from "express";
 const router = express.Router();
 
-router.get("/", function (req, res, next) {
-    res.render("index", { title: "Express" });
+router.get("/", (req, res) => {
+    res.render("login");
 });
 
-router.post("/", function (req, res, next) {
+router.post("/", (req, res) => {
+    
     const { name, password } = req.body;
-
-    res.render("index", { title: "Express" });
+    const user = validateAuth(name, password);
+    if (user) {
+        req.session.regenerate(() => {
+            req.session.user = true;
+            req.session.save(() => {
+                res.redirect("/admin");
+            });
+        });
+    } else {
+        res.render("login");
+    }
 });
 
 function validateAuth(name, password) {
