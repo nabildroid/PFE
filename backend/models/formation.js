@@ -1,5 +1,9 @@
 import DB from "../bdd";
 
+export function getCategories() {
+    return ["Bureautique", "Securité"];
+}
+
 // returns a list of formations and a list of categories
 export function getFormations() {
     const formations = [

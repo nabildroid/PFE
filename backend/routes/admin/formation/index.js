@@ -1,11 +1,18 @@
 import express from "express";
 const router = express.Router();
 
+import { getCategories } from "../../../models/formation";
 import inscription from "./inscription";
 import presence from "./presence";
 
 // create new Fromation
-router.get("/new", (req, res) => {
+router.get("/new", (_, res) => {
+    const categories = getCategories();
+    res.render("createFormation", { categories });
+});
+
+// create new Fromation
+router.post("/new", (req, res) => {
     const { name, title, description } = req.body;
     res.send("hello world");
 });
@@ -29,7 +36,5 @@ router.post("/:id/", (req, res) => {
 
 router.use("/:id/inscription", inscription);
 router.use("/:id/presence", presence);
-
-
 
 export default router;
