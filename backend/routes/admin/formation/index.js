@@ -1,7 +1,10 @@
 import express from "express";
 const router = express.Router();
 
-import { getCategories } from "../../../models/formation";
+import multer from "multer";
+const upload = multer({ dest: "/tmp" });
+
+import { createFormation, getCategories } from "../../../models/formation";
 import inscription from "./inscription";
 import presence from "./presence";
 
@@ -11,10 +14,21 @@ router.get("/new", (_, res) => {
     res.render("createFormation", { categories });
 });
 
+const formationFilesUploader = upload.fields([
+    { name: "pdf", maxCount: 1 },
+    { name: "image", maxCount: 1 },
+]);
+
 // create new Fromation
-router.post("/new", (req, res) => {
-    const { name, title, description } = req.body;
-    res.send("hello world");
+router.post("/new", formationFilesUploader, (req, res) => {
+    const { title, description, category, duration } = req.body;
+
+    const { user } = req.session;
+
+    const id = createFormation(title, description, category, duration, user);
+
+    // move files to file with a name
+    res.redirect("/admin");
 });
 
 // on formation selected

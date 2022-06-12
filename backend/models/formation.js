@@ -90,3 +90,8 @@ export function getFormation(id) {
 
 // update one formation
 export function setFormation(id, data) {}
+
+// create new formation and return its id;
+export function createFormation(title, description, category, duration, user) {
+    return 11;
+}

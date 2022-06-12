@@ -55,6 +55,7 @@
                         <form
                             method="post"
                             class="mt-8 bg-white overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:mx-0 md:rounded-sm"
+                            enctype="multipart/form-data"
                         >
                             <div
                                 class="flex flex-col sm:flex-row w-full items-stretch justify-start"
@@ -111,6 +112,20 @@
                                             <%});%>
                                         </select>
                                     </div>
+                                    <div class="space-y-1">
+                                        <label
+                                            class="text-slate-500 text-sm"
+                                            for="duration"
+                                            >duré <sub>(jour)</sub></label
+                                        >
+                                        <input
+                                            required
+                                            class="outline-none focus:ring-blue-700 focus:ring-2 text-blue-900 w-full p-1 rounded-md border border-gray-300"
+                                            id="duration"
+                                            name="duration"
+                                            type="number"
+                                        />
+                                    </div>
                                 </div>
                                 <div
                                     class="max-w-sm w-full mx-auto space-y-4 px-4 sm:px-0 py-4"
@@ -122,8 +137,14 @@
                                             >Fiche Technique</label
                                         >
                                         <div
-                                            class="h-28 flex flex-col space-y-2 hover:border-blue-600 items-center justify-center w-full mt-2 border-2 border-dashed border-blue-200 rounded-lg px-2"
+                                            class="h-28 flex flex-col space-y-2 hover:border-blue-600 items-center justify-center w-full mt-2 border-2 border-dashed border-blue-200 rounded-lg px-2 relative"
                                         >
+                                            <input
+                                                type="file"
+                                                name="pdf"
+                                                class="absolute inset-0 opacity-0"
+                                                accept="application/pdf"
+                                            />
                                             <img
                                                 src="/images/pdf.png"
                                                 class="w-9"
@@ -140,8 +161,14 @@
                                             >Photo de Couverture</label
                                         >
                                         <div
-                                            class="h-28 flex flex-col space-y-2 hover:border-blue-600 items-center justify-center w-full mt-2 border-2 border-dashed border-blue-200 rounded-lg px-2"
+                                            class="h-28 flex flex-col space-y-2 hover:border-blue-600 items-center justify-center w-full mt-2 border-2 border-dashed border-blue-200 rounded-lg px-2 relative"
                                         >
+                                            <input
+                                                type="file"
+                                                name="image"
+                                                class="absolute inset-0 opacity-0"
+                                                accept="image/png,image/jpg,image/jpeg"
+                                            />
                                             <img
                                                 src="/images/png.png"
                                                 class="w-9"
