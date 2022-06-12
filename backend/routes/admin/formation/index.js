@@ -4,7 +4,11 @@ const router = express.Router();
 import multer from "multer";
 const upload = multer({ dest: "/tmp" });
 
-import { createFormation, getCategories } from "../../../models/formation";
+import {
+    createFormation,
+    getAdminFormation,
+    getCategories,
+} from "../../../models/formation";
 import inscription from "./inscription";
 import presence from "./presence";
 
@@ -33,19 +37,32 @@ router.post("/new", formationFilesUploader, (req, res) => {
 
 // on formation selected
 router.get("/:id", (req, res) => {
-    console.log("openeing a formation!!");
-    const type = "open" | "archived" | "active";
-    res.send("hello world");
+    // const type = "open" | "archived" | "active";
+    const { id } = req.params;
+    const formation = getAdminFormation(id);
+
+    if (formation.type == "open") {
+        res.render("demandes", formation);
+    } else {
+        const totalStudents = formation.groups.reduce(
+            (acc, v) => acc + v.students,
+            0
+        );
+
+        const teachers = formation.groups
+            .reduce((acc, v) => `${acc}, ${v.teacher}`, "")
+            .slice(2);
+
+        res.render("active", { ...formation, teachers, totalStudents });
+    }
+    res.send("showing the details of one selected formation");
 });
 
-// update the formation
-router.patch("/:id", (req, res) => {
+// archive formation
+router.get("/:id/archive", (req, res) => {
     const type = "open" | "archived" | "active";
-});
-
-// set state
-router.post("/:id/", (req, res) => {
-    const { state } = req.body;
+    res.send("archiving the formation");
+    // res.redirect("/admin");
 });
 
 router.use("/:id/inscription", inscription);

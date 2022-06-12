@@ -4,7 +4,7 @@ const router = express.Router();
 import salles from "./salle";
 import formation from "./formation";
 
-import { getAdminForamtion } from "../../models/formation";
+import { getAdminForamtions } from "../../models/formation";
 
 // ensures the use is authenticated
 router.use((req, res, next) => {
@@ -16,7 +16,7 @@ router.use((req, res, next) => {
 
 /* GET users listing. */
 router.get("/", (req, res) => {
-    const formations = getAdminForamtion();
+    const formations = getAdminForamtions();
 
     res.render("admin", { formations });
 });

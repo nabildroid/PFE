@@ -5,6 +5,7 @@ const router = express.Router();
 
 // get insciption
 router.get("/:inId", (req, res) => {
+    res.send("inscription page");
 });
 
 // delete insciption

@@ -53,7 +53,7 @@ export function getFormations() {
     return { formations, categories };
 }
 
-export function getAdminForamtion() {
+export function getAdminForamtions() {
     return [
         {
             id: 1,
@@ -77,6 +77,54 @@ export function getAdminForamtion() {
             state: "archive",
         },
     ];
+}
+
+export function getAdminFormation(id) {
+    // todo add archived ones;
+
+    const open = {
+        id,
+        title: "Excel",
+        type: "open",
+        demandes: [
+            {
+                id: 1,
+                name: "Nabil Lakrib",
+                email: "pni20156789@gmail.com",
+                accepted: true,
+            },
+            {
+                id: 2,
+                name: "Ikram Dellici",
+                email: "karouma0delli2001@gmail.com",
+                accepted: false,
+            },
+        ],
+    };
+
+    const active = {
+        id,
+        title: "PHP",
+        type: "active",
+        groups: [
+            {
+                id: 1,
+                title: "1",
+                teacher: "Nabil Lakrib",
+                teaterId: 2, //todo use id and hashtag to navigate to the teacher
+                students:10,
+            },
+            {
+                id: 2,
+                title: "2",
+                teacher: "Ikram Dellici",
+                titleId: 1,
+                students:50,
+            },
+        ],
+    };
+
+    return open;
 }
 
 // get one formation
