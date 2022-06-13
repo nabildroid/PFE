@@ -12,7 +12,8 @@ router.get("/", function (req, res, next) {
         formations: formations.filter(
             (f) => !category || f.category == category
         ),
-        categories,
+        category,
+        categories: categories.filter((a) => a != category),
     });
 });
 
