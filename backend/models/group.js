@@ -23,4 +23,45 @@ export function getGroups(formation) {
 
 export function createGroup(formation, salle, teacher, time) {}
 
-export function getInscriptionFromGroup(group) {}
+export function getInscriptionFromGroup(group) {
+    return [
+        {
+            name:"Nabil Lakrib",
+            id:1,
+        },
+        {
+            name:"Toufik Lakrib",
+            id:2,
+        },
+        {
+            name:"Lakrib Imen",
+            id:3,
+        }
+        ,
+        {
+            name:"Nabildroid",
+            id:4,
+        }
+        ,
+        {
+            name:"Utilisateur 1",
+            id:5,
+        }
+        ,
+        {
+            name:"Khabash 1",
+            id:6,
+        }
+        ,
+        {
+            name:"Khabash 2",
+            id:7,
+        }
+        
+
+
+
+    ]
+}
+
+
