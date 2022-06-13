@@ -1,6 +1,11 @@
 import express from "express";
 const router = express.Router();
 
+import {
+    getEditableFormation,
+    updateFormation,
+} from "../../../models/formation";
+
 import multer from "multer";
 const upload = multer({ dest: "/tmp" });
 
@@ -61,6 +66,27 @@ router.get("/:id", (req, res) => {
 // archive formation
 router.get("/:id/archive", (req, res) => {
     const type = "open" | "archived" | "active";
+    res.send("archiving the formation");
+    // res.redirect("/admin");
+});
+
+// edit formation
+router.get("/:id/edit", (req, res) => {
+    const { id } = req.params;
+    const formation = getEditableFormation(id);
+    const categories = getCategories();
+
+    res.render("editFormation", { ...formation, categories });
+    // res.redirect("/admin");
+});
+
+router.post("/:id/edit", (req, res) => {
+    const { id } = req.params;
+
+    const { title, description, category, duration } = req.body;
+
+    updateFormation(id, { title, description, category, duration });
+    
     res.send("archiving the formation");
     // res.redirect("/admin");
 });

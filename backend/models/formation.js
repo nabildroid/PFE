@@ -81,6 +81,16 @@ export function getAdminForamtions() {
     ];
 }
 
+export function getEditableFormation(id) {
+    return {
+        id,
+        title: "PHP",
+        description: "an editable description for this formation AKA cours",
+        category: "tech",
+        duration: 2,
+    };
+}
+
 export function getAdminFormation(id) {
     // todo add archived ones;
     const demandes = getInscriptions(id);
@@ -90,7 +100,6 @@ export function getAdminFormation(id) {
         type: "open",
         demandes,
     };
-
 
     const groups = getGroups(id);
     const active = {
@@ -113,7 +122,7 @@ export function getFormation(id) {
 }
 
 // update one formation
-export function setFormation(id, data) {}
+export function updateFormation(id, data) {}
 
 // create new formation and return its id;
 export function createFormation(title, description, category, duration, user) {
