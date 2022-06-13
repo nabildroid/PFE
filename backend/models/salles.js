@@ -1,27 +1,24 @@
 import DB from "../bdd";
 
-export function getSalles() {
-    return [
-        {
-            id: 1,
-            name: "14",
-            max: 25,
-        },
-        {
-            id: 2,
-            name: "R2",
-            max: 30,
-        },
-        {
-            id: 3,
-            name: "salle des cours, 6e etage",
-            max: 10000,
-        },
-    ];
+export async function getSalles() {
+  const { results: salles } = await DB("select * from salle");
+
+  return salles.map(a=>({
+    id:a.id,
+    name:a.nom,
+    max:a.max
+  }));
+  
 }
 
-export function createSalle(name,max) {
-    
+export async function createSalle(name, max) {
+  const { results } = await DB("insert into salle(nom,max) values(?,?)", [
+    name,
+    max,
+  ]);
+  const { insertId } = results;
+
+  return insertId;
 }
 
 export function deleteSalle(name) {}

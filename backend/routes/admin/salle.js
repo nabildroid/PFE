@@ -2,8 +2,8 @@ import express from "express";
 import { createSalle, getSalles } from "../../models/salles";
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    const salles = getSalles();
+router.get("/", async (req, res) => {
+    const salles = await getSalles();
     res.render("salles", { salles });
 });
 
@@ -11,12 +11,12 @@ router.get("/new", (req, res) => {
     res.render("createSalle");
 });
 
-router.post("/new", (req, res) => {
+router.post("/new", async (req, res) => {
     const { name, max } = req.body;
 
-    createSalle(name,max);
+    const id = await createSalle(name,max);
 
-    res.redirect("/admin/salles");
+    res.redirect("/admin/salles#"+id);
 });
 
 export default router;
