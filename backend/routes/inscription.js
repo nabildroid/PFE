@@ -17,7 +17,7 @@ router.get("/:id", function (req, res, next) {
 
 router.post("/:id", (req, res) => {
     const { name, fonction, organisme, email, tel } = req.body;
-    const { id } = res.params;
+    const { id } = req.params;
 
     createInscription(id, name, fonction, organisme, email, tel);
     res.redirect("/");

@@ -1,8 +1,23 @@
 import DB from "../bdd";
 
 // create a inscription
-export function createInscription(formation,name,fonction,organisme,email,tel) {
+export async function createInscription(
+    formation,
+    name,
+    fonction,
+    organisme,
+    email,
+    tel
+) {
+    const { results } = await DB(
+        "insert into etudiant(nom,mail,fonction,organisme) values(?,?,?,?)",
+        [name, email, fonction, organisme, tel]
+    );
 
+    await DB(
+        "insert into conserne(formation,etudiant,etat) values (?,?,'attend')",
+        [formation, results.insertId]
+    );
 }
 
 // get a list of inscription of a formation
