@@ -1,23 +1,23 @@
 import DB from "../bdd";
 
-export function getTeachers() {
-    return [
-        {
-            id: 1,
-            name: "Nabil Lakrib",
-            tel: "0712345678",
-            email: "contact@laknabil.me",
-        },
-        {
-            id: 2,
-            name: "Ikram Dellici",
-            tel: "0712345678",
-            email: "contact@ikram.com",
-        },
-    ];
+export async function getTeachers() {
+    const { results: teachers } = await DB("select * from fourmateur");
+
+  return teachers.map(a=>({
+    id:a.id,
+    name:a.nom,
+    email:a.mail,
+    tel:a.tel,
+  }));
+  
 }
 
+export async function createTeacher(name, tel, email) {
+  const { results } = await DB(
+    "insert into fourmateur(nom,mail,tel) values(?,?,?)",
+    [name, tel, email]
+  );
+  const { insertId } = results;
 
-export function createTeacher(name,tel,email){
-    
+  return insertId;
 }
