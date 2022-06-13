@@ -125,11 +125,21 @@ export function getFormation(id) {
 export function updateFormation(id, data) {}
 
 // create new formation and return its id;
-export function createFormation(title, description, category, duration, user) {
-    return 11;
+export async function createFormation(
+    title,
+    description,
+    category,
+    duration,
+    user
+) {
+    const { results } = await DB(
+        "insert into formation(nom,type,dure,admin) values(?,?,?,?)",
+        [title, category, duration, user]
+    );
+
+    const { insertId } = results;
+
+    return insertId;
 }
 
-
-export function archiveFormation(id){
-    
-}
+export function archiveFormation(id) {}

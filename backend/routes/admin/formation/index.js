@@ -33,7 +33,7 @@ const formationFilesUploader = upload.fields([
 router.post("/new", formationFilesUploader, (req, res) => {
     const { title, description, category, duration } = req.body;
 
-    const { user } = req.session;
+    const user = req.session.user;
 
     const id = createFormation(title, description, category, duration, user);
 
@@ -66,7 +66,6 @@ router.get("/:id", (req, res) => {
 
 // archive formation
 router.get("/:id/archive", (req, res) => {
-    
     const { id } = req.params;
     archiveFormation(id);
     res.send("archiving the formation");
@@ -88,7 +87,7 @@ router.post("/:id/edit", (req, res) => {
     const { title, description, category, duration } = req.body;
 
     updateFormation(id, { title, description, category, duration });
-    
+
     res.send("edited formation");
     // res.redirect("/admin");
 });
