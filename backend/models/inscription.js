@@ -1,7 +1,9 @@
 import DB from "../bdd";
 
 // create a inscription
-export function createInscription(data) {}
+export function createInscription(formation,name,fonction,organisme,email,tel) {
+
+}
 
 // get a list of inscription of a formation
 export function getInscriptions(formation) {

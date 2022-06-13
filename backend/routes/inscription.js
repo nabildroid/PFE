@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 
 import { getFormation } from "../models/formation";
+import { createInscription } from "../models/inscription";
 
 /* GET home page. */
 router.get("/:id", function (req, res, next) {
@@ -15,8 +16,11 @@ router.get("/:id", function (req, res, next) {
 });
 
 router.post("/:id", (req, res) => {
-    const { name, fonction } = res.body;
-    res.render("inscription");
+    const { name, fonction, organisme, email, tel } = req.body;
+    const { id } = res.params;
+
+    createInscription(id, name, fonction, organisme, email, tel);
+    res.redirect("/");
 });
 
 export default router;
