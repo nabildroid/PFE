@@ -128,3 +128,8 @@ export function updateFormation(id, data) {}
 export function createFormation(title, description, category, duration, user) {
     return 11;
 }
+
+
+export function archiveFormation(id){
+    
+}

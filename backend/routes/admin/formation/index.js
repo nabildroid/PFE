@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 
 import {
+    archiveFormation,
     getEditableFormation,
     updateFormation,
 } from "../../../models/formation";
@@ -65,7 +66,9 @@ router.get("/:id", (req, res) => {
 
 // archive formation
 router.get("/:id/archive", (req, res) => {
-    const type = "open" | "archived" | "active";
+    
+    const { id } = req.params;
+    archiveFormation(id);
     res.send("archiving the formation");
     // res.redirect("/admin");
 });
@@ -77,7 +80,6 @@ router.get("/:id/edit", (req, res) => {
     const categories = getCategories();
 
     res.render("editFormation", { ...formation, categories });
-    // res.redirect("/admin");
 });
 
 router.post("/:id/edit", (req, res) => {
@@ -87,7 +89,7 @@ router.post("/:id/edit", (req, res) => {
 
     updateFormation(id, { title, description, category, duration });
     
-    res.send("archiving the formation");
+    res.send("edited formation");
     // res.redirect("/admin");
 });
 
