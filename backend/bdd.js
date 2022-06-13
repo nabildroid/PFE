@@ -14,4 +14,16 @@ DB.connect(function (err) {
     console.log("Database is connected successfully !");
 });
 
-export default DB;
+function query(sqlQuery, args = []) {
+    return new Promise((res, f) => {
+        DB.query(sqlQuery, args, (err, results, fields) => {
+            if (err) {
+                f(err);
+            } else {
+                res({ results, fields });
+            }
+        });
+    });
+}
+
+export default query;
