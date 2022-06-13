@@ -21,6 +21,9 @@ router.post("/:id", (req, res) => {
 
     createInscription(id, name, fonction, organisme, email, tel);
     res.redirect("/");
+
+    // https://tailwindui.com/components/application-ui/overlays/modals
+    // redirect in local
 });
 
 export default router;
