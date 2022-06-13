@@ -5,10 +5,14 @@ export function getTeachers() {
         {
             id: 1,
             name: "Nabil Lakrib",
+            tel: "0712345678",
+            email: "contact@laknabil.me",
         },
         {
             id: 2,
             name: "Ikram Dellici",
+            tel: "0712345678",
+            email: "contact@ikram.com",
         },
     ];
 }

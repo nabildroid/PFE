@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 
 import salles from "./salle";
+import teachers from "./teacher";
 import formation from "./formation";
 
 import { getAdminForamtions } from "../../models/formation";
@@ -23,5 +24,6 @@ router.get("/", (req, res) => {
 
 router.use("/salles", salles);
 router.use("/formation", formation);
+router.use("/teachers", teachers);
 
 export default router;

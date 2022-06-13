@@ -1,14 +1,15 @@
 import express from "express";
 import { getSalles } from "../../models/salles";
+import { getTeachers } from "../../models/teachers";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    const salles = getSalles();
-    res.render("salles", { salles });
+    const teachers = getTeachers();
+    res.render("teachers", { teachers });
 });
 
 router.get("/new", (req, res) => {
-    res.render("salles");
+    res.render("teachers");
 });
 
 router.post("/", (req, res) => {
