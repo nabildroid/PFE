@@ -91,9 +91,9 @@ export function getEditableFormation(id) {
     };
 }
 
-export function getAdminFormation(id) {
+export async function getAdminFormation(id) {
     // todo add archived ones;
-    const demandes = getInscriptions(id);
+    const demandes = await getInscriptions(id);
     const open = {
         id,
         title: "Excel",

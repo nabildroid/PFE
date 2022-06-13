@@ -6,9 +6,9 @@ import { getTeachers } from "../../../models/teachers";
 const router = express.Router();
 
 // get insciption
-router.get("/:inId", (req, res) => {
+router.get("/:inId", async (req, res) => {
     const { inId, id } = req.params; // todo id of the formation is not working
-    const inscription = getInscription(inId);
+    const inscription = await getInscription(inId);
     const groups = getGroups(id);
     const salles = getSalles();
     const teachers = getTeachers();

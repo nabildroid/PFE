@@ -42,10 +42,10 @@ router.post("/new", formationFilesUploader, (req, res) => {
 });
 
 // on formation selected
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
     // const type = "open" | "archived" | "active";
     const { id } = req.params;
-    const formation = getAdminFormation(id);
+    const formation = await getAdminFormation(id);
 
     if (formation.type == "open") {
         res.render("demandes", formation);
@@ -61,7 +61,6 @@ router.get("/:id", (req, res) => {
 
         res.render("active", { ...formation, teachers, totalStudents });
     }
-    res.send("showing the details of one selected formation");
 });
 
 // archive formation
