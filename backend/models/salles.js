@@ -20,6 +20,8 @@ export function getSalles() {
     ];
 }
 
-export function createSalle(name) {}
+export function createSalle(name,max) {
+    
+}
 
 export function deleteSalle(name) {}

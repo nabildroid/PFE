@@ -1,5 +1,5 @@
 import express from "express";
-import { getSalles } from "../../models/salles";
+import { createSalle, getSalles } from "../../models/salles";
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -8,11 +8,15 @@ router.get("/", (req, res) => {
 });
 
 router.get("/new", (req, res) => {
-    res.render("salles");
+    res.render("createSalle");
 });
 
-router.post("/", (req, res) => {
-    const { name } = req.body;
+router.post("/new", (req, res) => {
+    const { name, max } = req.body;
+
+    createSalle(name,max);
+
+    res.redirect("/admin/salles");
 });
 
 export default router;

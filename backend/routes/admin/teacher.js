@@ -1,6 +1,6 @@
 import express from "express";
 import { getSalles } from "../../models/salles";
-import { getTeachers } from "../../models/teachers";
+import { getTeachers, createTeacher } from "../../models/teachers";
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -9,11 +9,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/new", (req, res) => {
-    res.render("teachers");
+    res.render("createTeacher");
 });
 
-router.post("/", (req, res) => {
-    const { name } = req.body;
+router.post("/new", (req, res) => {
+    const { name, email, tel } = req.body;
+    const id = createTeacher(name, tel, email);
+    // todo redirect to the new teachers using id and #
+    res.redirect("/admin/teachers#" + id);
 });
 
 export default router;

@@ -16,3 +16,8 @@ export function getTeachers() {
         },
     ];
 }
+
+
+export function createTeacher(name,tel,email){
+    
+}
