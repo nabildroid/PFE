@@ -36,3 +36,19 @@ export async function getInscriptionFromGroup(group) {
     name: r.nom,
   }));
 }
+
+export async function getAttestations(group) {
+  const { results: condidats } = await DB(
+    "SELECT COUNT(present.id) as total, etudiant.nom,etudiant.mail,etudiant.fonction,etudiant.organisme,etudiant.id from present JOIN etudiant ON etudiant.id = present.etudiant where etudiant.groupe = ? group BY(etudiant.id) HAVING total > 1",
+    [group]
+  );
+
+  if (!condidats.length) return [];
+
+  const { results: formations } = await DB(
+    "SELECT * from formation JOIN conserne on conserne.formation = formation.id where conserne.etudiant = ?",
+    [condidats[0].id]
+  );
+
+  const [formation] = formations;
+}
