@@ -8,11 +8,11 @@ export async function getGroups(formation) {
 
   return groups.map((g, i) => ({
     id: g.id,
-    title: i+1,
+    title: i + 1,
     teacher: g.fourmateurNom,
     teacherId: g.fourmateurID,
     time: g.heure,
-    students: g.ss, 
+    students: g.ss,
   }));
 }
 
@@ -26,36 +26,13 @@ export async function createGroup(formation, salle, teacher, time) {
   return insertId;
 }
 
-export function getInscriptionFromGroup(group) {
-  // todo implement presence
-  return [
-    {
-      name: "Nabil Lakrib",
-      id: 1,
-    },
-    {
-      name: "Toufik Lakrib",
-      id: 2,
-    },
-    {
-      name: "Lakrib Imen",
-      id: 3,
-    },
-    {
-      name: "Nabildroid",
-      id: 4,
-    },
-    {
-      name: "Utilisateur 1",
-      id: 5,
-    },
-    {
-      name: "Khabash 1",
-      id: 6,
-    },
-    {
-      name: "Khabash 2",
-      id: 7,
-    },
-  ];
+export async function getInscriptionFromGroup(group) {
+  const { results } = await DB("select * from etudiant where groupe = ?", [
+    group,
+  ]); // todo make sure the student is accepted
+
+  return results.map((r) => ({
+    id: r.id,
+    name: r.nom,
+  }));
 }

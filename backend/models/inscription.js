@@ -65,5 +65,18 @@ export async function setGroup(inscription, group) {
   ]);
 }
 
-// todo mark a inscription as present for today (NOW)
-export function setPresent(id) {}
+export async function setPresent(id) {
+  let day;
+  const { results: exists } = await DB(
+    'SELECT * from journ where date = date_format(NOW(),"%y-%m-%d")'
+  );
+  if (exists.length) {
+    day = exists[0].id;
+  } else {
+    const { results } = await DB("insert into journ(date) value (NOW())");
+    day = results.insertId;
+  }
+
+  await DB("insert into present(etudiant, jour) values (?,?)", [id, day]);
+  console.log("setting the presence for", id);
+}
