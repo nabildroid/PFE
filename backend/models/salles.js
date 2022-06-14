@@ -21,4 +21,3 @@ export async function createSalle(name, max) {
   return insertId;
 }
 
-export function deleteSalle(name) {}

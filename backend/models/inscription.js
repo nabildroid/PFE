@@ -53,7 +53,9 @@ export async function getInscription(id) {
   };
 }
 
-export function archiveInscription(id) {}
+export function archiveInscription(id) {
+  // todo archive a inscription
+}
 
 // set group to one inscription
 export async function setGroup(inscription, group) {
@@ -63,5 +65,5 @@ export async function setGroup(inscription, group) {
   ]);
 }
 
-// mark a inscription as present for today (NOW)
+// todo mark a inscription as present for today (NOW)
 export function setPresent(id) {}

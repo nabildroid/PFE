@@ -3,6 +3,7 @@ import { getGroups } from "./group";
 import { getInscriptions } from "./inscription";
 
 export async function getCategories() {
+  // todo add all categories
   return ["Bureautique", "Securité"];
 }
 
@@ -44,6 +45,7 @@ export async function getAdminForamtions() {
 }
 
 export function getEditableFormation(id) {
+  // todo edit formation
   return {
     id,
     title: "PHP",
@@ -83,6 +85,8 @@ export async function getAdminFormation(id) {
 
 // get one formation
 export function getFormation(id) {
+  // todo public inscription dynamic data
+  // todo upload files
   return {
     id,
     title: "PHP",

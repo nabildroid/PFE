@@ -27,6 +27,7 @@ export async function createGroup(formation, salle, teacher, time) {
 }
 
 export function getInscriptionFromGroup(group) {
+  // todo implement presence
   return [
     {
       name: "Nabil Lakrib",
