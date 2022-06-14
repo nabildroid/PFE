@@ -56,7 +56,12 @@ export async function getInscription(id) {
 export function archiveInscription(id) {}
 
 // set group to one inscription
-export function setGroup(id, group) {}
+export async function setGroup(inscription, group) {
+  await DB("update etudiant set groupe = ? where id= ?", [group, inscription]);
+  await DB("update conserne set etat = 'accepté' where etudiant= ? ", [
+    inscription,
+  ]);
+}
 
 // mark a inscription as present for today (NOW)
 export function setPresent(id) {}
