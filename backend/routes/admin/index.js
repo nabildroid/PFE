@@ -9,7 +9,6 @@ import { getAdminForamtions } from "../../models/formation";
 
 // ensures the use is authenticated
 router.use((req, res, next) => {
-    return next();
     if (req.session.user) {
         next();
     } else res.redirect("/login");

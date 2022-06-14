@@ -28,7 +28,7 @@ app.use(express.static(path.join("./", "public")));
 app.use(
     session({
         secret: "RI_IS_DIFFUCT_MODULE",
-        resave: false,
+        resave: true,
         saveUninitialized: true,
         cookie: {
             maxAge: 1000 * 60 * 60 * 24,
