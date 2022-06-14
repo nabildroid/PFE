@@ -33,7 +33,7 @@ router.post("/:inId", async (req, res) => {
   const { inId } = req.params;
   const { formation } = req;
 
-  const { teacher, salle, time, group: selectedGroup } = req.body;
+  const { teacher, salle, time, groupe: selectedGroup } = req.body;
   let group;
   if (selectedGroup) {
     group = selectedGroup;

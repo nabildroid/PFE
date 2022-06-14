@@ -24,30 +24,23 @@ export async function getFormations() {
   return { formations, categories };
 }
 
-export function getAdminForamtions() {
-  return [
-    {
-      id: 1,
-      title: "Excel",
-      students: 25,
-      groups: 3,
-      state: "active",
-    },
-    {
-      id: 2,
-      title: "PowerPoint",
-      students: 500,
-      groups: 10,
-      state: "ouvert",
-    },
-    {
-      id: 3,
-      title: "PHP",
-      students: 50,
-      groups: 3,
-      state: "archive",
-    },
-  ];
+export async function getAdminForamtions() {
+  const { results } = await DB(
+    "SELECT formation.nom,formation.id,formation.dateDebut,formation.dateFin, COUNT(DISTINCT etudiant.groupe) as gg ,count(etudiant.id) as ss from formation JOIN conserne on conserne.formation = formation.id JOIN etudiant ON etudiant.id = conserne.etudiant group by formation.id"
+  );
+  return results.map((r) => {
+    let state = "archive";
+    if (r.dateDebut && !r.dateFin) state = "active";
+    if (!r.dateDebut && !r.dateFin) state = "ouvert";
+
+    return {
+      id: r.id,
+      title: r.nom,
+      students: r.ss,
+      groups: r.gg,
+      state
+    };
+  });
 }
 
 export function getEditableFormation(id) {

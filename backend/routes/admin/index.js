@@ -16,8 +16,8 @@ router.use((req, res, next) => {
 });
 
 /* GET users listing. */
-router.get("/", (req, res) => {
-    const formations = getAdminForamtions();
+router.get("/",async (req, res) => {
+    const formations =await  getAdminForamtions();
 
     res.render("admin", { formations });
 });
