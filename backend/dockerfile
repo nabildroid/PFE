@@ -1,0 +1,15 @@
+# Use a node 12 base image
+FROM node
+
+
+
+WORKDIR /user/app
+
+COPY ./backend .
+
+RUN npm i 
+
+
+EXPOSE 3000
+
+CMD ["node","app.js"]
