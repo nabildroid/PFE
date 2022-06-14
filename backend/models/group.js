@@ -2,7 +2,7 @@ import DB from "../bdd";
 
 export async function getGroups(formation) {
   const { results: groups } = await DB(
-    "select *, fourmateur.id as fourmateurID, fourmateur.nom as fourmateurNom from groupe JOIN fourmateur on fourmateur.id = groupe.fourmateur where formation=?",
+    "select count(etudiant.nom) as ss,groupe.heure, groupe.id, fourmateur.id as fourmateurID, fourmateur.nom as fourmateurNom from etudiant JOIN groupe on etudiant.groupe = groupe.id JOIN fourmateur on fourmateur.id = groupe.fourmateur group BY(groupe.id)",
     [formation]
   );
 
@@ -12,7 +12,7 @@ export async function getGroups(formation) {
     teacher: g.fourmateurNom,
     teacherId: g.fourmateurID,
     time: g.heure,
-    students: 10, // todo implement this by grouping and counting
+    students: g.ss, 
   }));
 }
 

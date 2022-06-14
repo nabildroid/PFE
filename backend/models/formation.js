@@ -38,7 +38,7 @@ export async function getAdminForamtions() {
       title: r.nom,
       students: r.ss,
       groups: r.gg,
-      state
+      state,
     };
   });
 }
@@ -54,24 +54,31 @@ export function getEditableFormation(id) {
 }
 
 export async function getAdminFormation(id) {
+  const { results } = await DB("select * from formation where id=?", [id]);
+
+  const [selected] = results;
+  if (!selected.dateDebut && !selected.dateFin) {
+    const demandes = await getInscriptions(id);
+    const open = {
+      id,
+      title: selected.nom,
+      type: "open",
+      demandes,
+    };
+    return open;
+  } else {
+    const groups = await getGroups(id);
+
+    const active = {
+      id,
+      title: "PHP",
+      type: "active",
+      groups,
+    };
+
+    return active;
+  }
   // todo add archived ones;
-  const demandes = await getInscriptions(id);
-  const open = {
-    id,
-    title: "Excel",
-    type: "open",
-    demandes,
-  };
-
-  const groups = getGroups(id);
-  const active = {
-    id,
-    title: "PHP",
-    type: "active",
-    groups,
-  };
-
-  return open;
 }
 
 // get one formation
