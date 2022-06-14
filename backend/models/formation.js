@@ -111,4 +111,9 @@ export async function createFormation(
   return insertId;
 }
 
-export function archiveFormation(id) {}
+export async function archiveFormation(id) {
+  await DB("update formation set dateFin = NOW() where id=?", [id]);
+}
+export async function startFormation(id) {
+  await DB("update formation set dateDebut = NOW() where id=?", [id]);
+}

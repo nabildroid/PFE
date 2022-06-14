@@ -4,6 +4,7 @@ const router = express.Router();
 import {
   archiveFormation,
   getEditableFormation,
+  startFormation,
   updateFormation,
 } from "../../../models/formation";
 
@@ -63,14 +64,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// archive formation
-router.get("/:id/archive", (req, res) => {
-  const { id } = req.params;
-  archiveFormation(id);
-  res.send("archiving the formation");
-  // res.redirect("/admin");
-});
-
 // edit formation
 router.get("/:id/edit", (req, res) => {
   const { id } = req.params;
@@ -89,6 +82,20 @@ router.post("/:id/edit", (req, res) => {
 
   res.send("edited formation");
   // res.redirect("/admin");
+});
+
+// start the formation
+router.get("/:id/start", async (req, res) => {
+  const { id } = req.params;
+  await startFormation(id);
+  res.redirect("/admin"); // todo use id and #
+});
+
+// start the formation
+router.get("/:id/archive", async (req, res) => {
+  const { id } = req.params;
+  await archiveFormation(id);
+  res.redirect("/admin"); // todo use id and #
 });
 
 router.use(
