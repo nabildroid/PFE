@@ -27,7 +27,7 @@ export async function getFormations() {
 
 export async function getAdminForamtions() {
   const { results } = await DB(
-    "SELECT formation.nom,formation.id,formation.dateDebut,formation.dateFin, COUNT(DISTINCT etudiant.groupe) as gg ,count(etudiant.id) as ss from formation JOIN conserne on conserne.formation = formation.id JOIN etudiant ON etudiant.id = conserne.etudiant group by formation.id"
+    "SELECT formation.nom,formation.id,formation.dateDebut,formation.dateFin, COUNT(DISTINCT etudiant.groupe) as gg ,count(etudiant.id) as ss from formation left JOIN conserne on conserne.formation = formation.id left JOIN etudiant ON etudiant.id = conserne.etudiant group by formation.id"
   );
   return results.map((r) => {
     let state = "archive";

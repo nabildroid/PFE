@@ -41,7 +41,9 @@ router.post("/:inId", async (req, res) => {
     group = await createGroup(formation, salle, teacher, time);
   }
 
-  await setGroup(inId,group);
+  await setGroup(inId, group);
+
+  res.redirect("/admin/formation/" + formation);
 });
 
 // set insciption group

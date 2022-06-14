@@ -20,8 +20,8 @@ import inscription from "./inscription";
 import presence from "./presence";
 
 // create new Fromation
-router.get("/new", (_, res) => {
-  const categories = getCategories();
+router.get("/new",async (_, res) => {
+  const categories = await getCategories();
   res.render("createFormation", { categories });
 });
 
@@ -31,15 +31,15 @@ const formationFilesUploader = upload.fields([
 ]);
 
 // create new Fromation
-router.post("/new", formationFilesUploader, (req, res) => {
+router.post("/new", formationFilesUploader,async (req, res) => {
   const { title, description, category, duration } = req.body;
 
   const user = req.session.user;
 
-  const id = createFormation(title, description, category, duration, user);
+  const id =await  createFormation(title, description, category, duration, user);
 
   // move files to file with a name
-  res.redirect("/admin");
+  res.redirect("/admin#"+id);
 });
 
 // on formation selected
