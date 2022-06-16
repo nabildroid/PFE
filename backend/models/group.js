@@ -2,7 +2,7 @@ import DB from "../bdd";
 
 export async function getGroups(formation) {
   const { results: groups } = await DB(
-    "select count(etudiant.nom) as ss,groupe.heure, groupe.id, fourmateur.id as fourmateurID, fourmateur.nom as fourmateurNom from etudiant JOIN groupe on etudiant.groupe = groupe.id JOIN fourmateur on fourmateur.id = groupe.fourmateur group BY(groupe.id)",
+    "select count(etudiant.nom) as ss,groupe.heure, groupe.id, fourmateur.id as fourmateurID, fourmateur.nom as fourmateurNom from etudiant JOIN groupe on etudiant.groupe = groupe.id JOIN fourmateur on fourmateur.id = groupe.fourmateur where groupe.formation = ? group BY(groupe.id)",
     [formation]
   );
 
