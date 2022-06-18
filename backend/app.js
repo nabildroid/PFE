@@ -1,4 +1,3 @@
-import createError from "http-errors";
 import express from "express";
 import session from "express-session";
 import path from "path";
@@ -17,23 +16,26 @@ app.set("view engine", "ejs");
 
 app.use(logger("dev"));
 app.use(
-    express.urlencoded({
-        extended: true,
-    })
+  express.urlencoded({
+    extended: true,
+  })
 );
 app.use(express.static(path.join("./", "public")));
 
 // authentification
 
 app.use(
-    session({
-        secret: "RI_IS_DIFFUCT_MODULE",
-        resave: true,
-        saveUninitialized: true,
-        cookie: {
-            maxAge: 1000 * 60 * 60 * 24,
-        },
-    })
+  session({
+    secret: "RI_IS_DIFFUCT_MODULE",
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      secure: process.env.NODE_ENV === "production", // Prod is supposed to use https
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // must be 'none' to enable cross-site delivery
+      httpOnly: true,
+      maxAge: 1000 * 60,
+    },
+  })
 );
 
 // routes
@@ -49,17 +51,17 @@ app.use("/", inscriptionRouter);
 
 // error handler
 app.use(function (err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get("env") === "development" ? err : {};
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
-    // render the error page
-    res.status(err.status || 500);
-    res.render("error");
+  // render the error page
+  res.status(err.status || 500);
+  res.render("error");
 });
 
 app.listen(3000, () => {
-    console.log(`listening to port 3000`);
+  console.log(`listening to port 3000`);
 });
 
 export default app;
