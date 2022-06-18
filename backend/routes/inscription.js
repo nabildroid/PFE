@@ -5,9 +5,9 @@ import { getFormation } from "../models/formation";
 import { createInscription } from "../models/inscription";
 
 /* GET home page. */
-router.get("/:id", function (req, res, next) {
+router.get("/:id",  async (req, res) =>{
     const id = req.params.id;
-    const formation = getFormation(id);
+    const formation = await getFormation(id);
 
     res.render("inscription", {
         formation,

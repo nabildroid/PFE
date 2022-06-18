@@ -84,12 +84,14 @@ export async function getAdminFormation(id) {
 }
 
 // get one formation
-export function getFormation(id) {
-  // todo public inscription dynamic data
+export async function getFormation(id) {
+  const { results } = await DB("SELECT * from formation where id=?", [id]);
   // todo upload files
+
+  const [formation] = results;
   return {
     id,
-    title: "PHP",
+    title: formation.nom,
     file: "https://drive.google.com/file/d/1XT3p9oPxaFxAbhtyiQOrURdSWoaGKB3B/view?usp=sharing",
   };
 }
