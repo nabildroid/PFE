@@ -79,15 +79,14 @@ router.get("/:id/edit", async (req, res) => {
   res.render("editFormation", { ...formation, categories });
 });
 
-router.post("/:id/edit", (req, res) => {
+router.post("/:id/edit",formationFilesUploader, async (req, res) => {
   const { id } = req.params;
 
-  const { title, description, category, duration } = req.body;
+  const { title, category, duration } = req.body;
+  console.log(req.body);
+  await updateFormation(id, { title, category, duration });
 
-  updateFormation(id, { title, description, category, duration });
-
-  res.send("edited formation");
-  // res.redirect("/admin");
+  res.redirect("/admin");
 });
 
 // start the formation

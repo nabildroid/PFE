@@ -58,7 +58,7 @@ export async function getEditableFormation(id) {
   return {
     id,
     title: formation.nom,
-    category:  formation.type,
+    category: formation.type,
     duration: formation.dure,
   };
 }
@@ -105,7 +105,14 @@ export async function getFormation(id) {
 }
 
 // update one formation
-export function updateFormation(id, data) {}
+export async function updateFormation(id, data) {
+  await DB("update formation set nom=?,dure=?,type=? where id=?", [
+    data.title,
+    data.duration,
+    data.category,
+    id,
+  ]);
+}
 
 // create new formation and return its id;
 export async function createFormation(
