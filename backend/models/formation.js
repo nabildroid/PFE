@@ -50,14 +50,16 @@ export async function getAdminForamtions() {
   });
 }
 
-export function getEditableFormation(id) {
+export async function getEditableFormation(id) {
+  const { results } = await DB("select * from formation where id= ?", [id]);
+  const [formation] = results;
+
   // todo edit formation
   return {
     id,
-    title: "PHP",
-    description: "an editable description for this formation AKA cours",
-    category: "tech",
-    duration: 2,
+    title: formation.nom,
+    category:  formation.type,
+    duration: formation.dure,
   };
 }
 

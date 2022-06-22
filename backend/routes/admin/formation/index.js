@@ -20,7 +20,7 @@ import inscription from "./inscription";
 import presence from "./presence";
 
 // create new Fromation
-router.get("/new",async (_, res) => {
+router.get("/new", async (_, res) => {
   const categories = await getCategories();
   res.render("createFormation", { categories });
 });
@@ -31,15 +31,21 @@ const formationFilesUploader = upload.fields([
 ]);
 
 // create new Fromation
-router.post("/new", formationFilesUploader,async (req, res) => {
+router.post("/new", formationFilesUploader, async (req, res) => {
   const { title, description, category, duration } = req.body;
 
   const user = req.session.user;
 
-  const id =await  createFormation(title, description, category, duration, user);
+  const id = await createFormation(
+    title,
+    description,
+    category,
+    duration,
+    user
+  );
 
   // move files to file with a name
-  res.redirect("/admin#"+id);
+  res.redirect("/admin#" + id);
 });
 
 // on formation selected
@@ -65,10 +71,10 @@ router.get("/:id", async (req, res) => {
 });
 
 // edit formation
-router.get("/:id/edit", (req, res) => {
+router.get("/:id/edit", async (req, res) => {
   const { id } = req.params;
-  const formation = getEditableFormation(id);
-  const categories = getCategories();
+  const formation = await getEditableFormation(id);
+  const categories = await getCategories();
 
   res.render("editFormation", { ...formation, categories });
 });
