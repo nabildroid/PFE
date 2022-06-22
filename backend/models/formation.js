@@ -3,8 +3,15 @@ import { getGroups } from "./group";
 import { getInscriptions } from "./inscription";
 
 export async function getCategories() {
-  // todo add all categories
-  return ["Bureautique", "Securité"];
+
+  return [
+    "Sciences documentaires",
+    "Langage de programmation",
+    "Technologie du web",
+    "Audiovisuel & multimédia",
+    "Réseaux de communication sans fil et mobile",
+    "Systèmes d’information et bases de données",
+  ];
 }
 
 // returns a list of formations and a list of categories
