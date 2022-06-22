@@ -119,12 +119,18 @@
                         class="inline-block px-2 leading-5 text-xs font-bold text-green-600 rounded-full bg-green-100 -ml-2"
                         >Accepté</span
                       >
-                      <%}%><%if(!d.accepted){%>
+                      <%}%><%if(!d.accepted && d.archived){%>
                       <span
-                        class="inline-block px-2 leading-5 text-xs font-bold text-amber-600 rounded-full bg-amber-100 -ml-2"
-                        >Attende</span
+                        class="inline-block px-2 leading-5 text-xs font-bold text-red-600 rounded-full bg-red-100 -ml-2"
+                        >Archive</span
                       >
                       <%}%>
+                      <%if(!d.accepted && !d.archived){%>
+                        <span
+                          class="inline-block px-2 leading-5 text-xs font-bold text-amber-600 rounded-full bg-amber-100 -ml-2"
+                          >Attend</span
+                        >
+                        <%}%>
                     </td>
                     <td
                       class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"

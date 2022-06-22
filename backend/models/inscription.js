@@ -30,6 +30,7 @@ export async function getInscriptions(formation) {
   return results.map((r) => ({
     id: r.id,
     accepted: r.etat == "accepté",
+    archived: r.etat == "archiver",
     email: r.mail,
     name: r.nom,
   }));
@@ -45,6 +46,7 @@ export async function getInscription(id) {
   const [inscription] = results;
 
   return {
+    id,
     nom: inscription.etudiant,
     formation: inscription.nomFormation,
     email: inscription.mail,
@@ -53,8 +55,9 @@ export async function getInscription(id) {
   };
 }
 
-export function archiveInscription(id) {
-  // todo archive a inscription
+export async function archiveInscription(id) {
+  await DB("update etudiant set groupe = null where id=?", [id]);
+  await DB("update conserne set etat = 'archiver' where etudiant = ?", [id]);
 }
 
 // set group to one inscription

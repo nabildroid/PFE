@@ -1,6 +1,10 @@
 import express from "express";
 import { getGroups, createGroup } from "../../../models/group";
-import { getInscription, setGroup } from "../../../models/inscription";
+import {
+  archiveInscription,
+  getInscription,
+  setGroup,
+} from "../../../models/inscription";
 import { getSalles } from "../../../models/salles";
 import { getTeachers } from "../../../models/teachers";
 const router = express.Router();
@@ -25,8 +29,13 @@ router.get("/:inId", async (req, res) => {
   });
 });
 
-// delete insciption
-router.delete("/:inId", (req, res) => {});
+// archive insciption
+router.get("/:inId/archive", async (req, res) => {
+  const { inId } = req.params;
+
+  await archiveInscription(inId);
+  res.redirect("../..");
+});
 
 // set insciption group
 router.post("/:inId", async (req, res) => {
