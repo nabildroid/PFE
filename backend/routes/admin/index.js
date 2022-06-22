@@ -19,7 +19,13 @@ router.use((req, res, next) => {
 router.get("/", async (req, res) => {
   const formations = await getAdminForamtions();
 
-  res.render("admin", { formations });
+  res.render("admin", {
+    formations: formations.sort((a, b) => {
+      let i = a.state == "active" ? 2 : a.state == "ouvert" ? 1 : 0;
+      let ii = b.state == "active" ? 2 : b.state == "ouvert" ? 1 : 0;
+      return  ii - i;
+    }),
+  });
 });
 
 router.use("/salles", salles);

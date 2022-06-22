@@ -1,171 +1,155 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Admin</title>
-        <link rel="stylesheet" href="/stylesheets/style.css" />
-    </head>
-    <body class="bg-blue-50/80">
-        <div class="pb-4">
-            <div class="border-b border-indigo-100">
-                <nav
-                    class="max-w-4xl mx-auto px-3 md:px-0 flex justify-between items-start sm:items-center"
-                >
-                    <img
-                        src="/images/logo.png"
-                        class="-ml-2 h-10 mt-2 aspect-video"
-                    />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body class="bg-blue-50/80">
+    <div class="pb-4">
+      <div class="border-b border-indigo-100">
+        <nav
+          class="max-w-4xl mx-auto px-3 md:px-0 flex justify-between items-start sm:items-center"
+        >
+          <img src="/images/logo.png" class="-ml-2 h-10 mt-2 aspect-video" />
 
-                    <div
-                        class="flex items-center overflow-y-hidden overflow-x-auto w-full justify-center flex-1"
+          <div
+            class="flex items-center overflow-y-hidden overflow-x-auto w-full justify-center flex-1"
+          >
+            <a
+              href="/admin"
+              class="text-sm font-medium text-neutral-800 border-b-4 border-blue-500 px-3 py-5 -my-0.5 rounded-sm hover:text-blue-900 hover:bg-blue-200"
+              >Formations</a
+            >
+            <a
+              href="/admin/teachers"
+              class="text-sm font-medium text-neutral-800 px-3 py-5 -my-0.5 rounded-sm hover:text-blue-900 hover:bg-blue-200"
+              >Enseignants</a
+            >
+            <a
+              href="/admin/salles"
+              class="text-sm font-medium text-neutral-800 px-3 py-5 -my-0.5 rounded-sm hover:text-blue-900 hover:bg-blue-200"
+              >Salles</a
+            >
+          </div>
+        </nav>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <main class="mt-3 md:mt-8">
+          <div
+            class="flex text-center space-y-0 px-2 md:px-0 flex-row items-end justify-between"
+          >
+            <h1
+              class="text-xl leading-normal text-left text-blue-900 font-semibold"
+            >
+              Les <br />Formation
+            </h1>
+            <a
+              href="/admin/formation/new"
+              class="bg-blue-800 max-w-xs mx-0 text-white px-6 py-1 rounded-sm text-sm hover:bg-blue-700"
+            >
+              Ajouter une Formation
+            </a>
+          </div>
+
+          <div class="mt-4 w-full">
+            <div
+              class="mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:mx-0 md:rounded-sm"
+            >
+              <table class="min-w-full divide-y divide-gray-300">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-blue-900 sm:pl-6"
                     >
-                        <a
-                            href="/admin"
-                            class="text-sm font-medium text-neutral-800 border-b-4 border-blue-500 px-3 py-5 -my-0.5 rounded-sm hover:text-blue-900 hover:bg-blue-200"
-
-                            >Formations</a
-                        >
-                        <a
-                            href="/admin/teachers"
-                            
-                            class="text-sm font-medium text-neutral-800 px-3 py-5 -my-0.5 rounded-sm hover:text-blue-900 hover:bg-blue-200"
-                            >Enseignants</a
-                        >
-                        <a
-                            href="/admin/salles"
-                            class="text-sm font-medium text-neutral-800 px-3 py-5 -my-0.5 rounded-sm hover:text-blue-900 hover:bg-blue-200"
-                            >Salles</a
-                        >
-                    </div>
-                </nav>
-            </div>
-            <div class="max-w-4xl mx-auto">
-                <main class="mt-3 md:mt-8">
-                    <div
-                        class="flex text-center space-y-0 px-2 md:px-0 flex-row items-end justify-between"
+                      Formation
+                    </th>
+                    <th
+                      scope="col"
+                      class="hidden px-3 py-3.5 text-left text-sm font-semibold text-blue-900 sm:table-cell"
                     >
-                        <h1
-                            class="text-xl leading-normal text-left text-blue-900 font-semibold"
-                        >
-                            Les <br />Formation
-                        </h1>
-                        <a
-                            href="/admin/formation/new"
-                            class="bg-blue-800 max-w-xs mx-0 text-white px-6 py-1 rounded-sm text-sm hover:bg-blue-700"
-                        >
-                            Ajouter une Formation
-                        </a>
-                    </div>
+                      Nombre d'Apprenant
+                    </th>
+                    <th
+                      scope="col"
+                      class="hidden px-3 py-3.5 text-left text-sm font-semibold text-blue-900 lg:table-cell"
+                    >
+                      Groupes
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-3 py-3.5 text-left text-sm font-semibold text-blue-900"
+                    >
+                      Etat
+                    </th>
+                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                      <span class="sr-only">Edit</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200 bg-white">
+                  <% formations.forEach(function(f){%>
+                  <tr id="<%= f.id %>">
+                    <td
+                      class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-900 sm:pl-6"
+                    >
+                      <%= f.title %>
+                    </td>
+                    <td
+                      class="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell"
+                    >
+                      <span class="font-mono font-bold"><%= f.students %></span>
+                      apprenants
+                    </td>
+                    <td
+                      class="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 lg:table-cell"
+                    >
+                      <span class="font-mono font-bold"><%= f.groups %></span>
+                      groupes
+                    </td>
+                    <td
+                      class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                    >
+                      <% if (f.state == "active") { %>
+                      <span
+                        class="inline-block px-2 leading-5 text-xs font-bold text-green-600 rounded-full bg-green-100 -ml-2"
+                        >Active</span
+                      >
+                      <%}%> <% if (f.state == "ouvert") { %>
+                      <span
+                        class="inline-block px-2 leading-5 text-xs font-bold text-blue-600 rounded-full bg-blue-100 -ml-2"
+                        >Ouvert</span
+                      >
+                      <%}%> <% if (f.state == "archive") { %>
+                      <span
+                        class="inline-block px-2 leading-5 text-xs font-bold text-amber-600 rounded-full bg-amber-100 -ml-2"
+                        >Archive</span
+                      >
+                      <%}%>
+                    </td>
+                    <td
+                      class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
+                    > 
+                      <% if (f.state != "archive") { %>
+                      <a
+                        href="/admin/formation/<%= f.id %>"
+                        class="px-2 py-1 rounded-md border border-gray-300 hover:text-blue-600 hover:bg-blue-200 text-gray-600"
+                        >Afficher<span class="sr-only">Afficher</span></a
+                      >
+                      <%}%>
+                    </td>
+                  </tr>
 
-                    <div class="mt-4 w-full">
-                        <div
-                            class="mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:mx-0 md:rounded-sm"
-                        >
-                            <table class="min-w-full divide-y divide-gray-300">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th
-                                            scope="col"
-                                            class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-blue-900 sm:pl-6"
-                                        >
-                                            Formation
-                                        </th>
-                                        <th
-                                            scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-blue-900 sm:table-cell"
-                                        >
-                                            Nombre d'Apprenant
-                                        </th>
-                                        <th
-                                            scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-blue-900 lg:table-cell"
-                                        >
-                                            Groupes
-                                        </th>
-                                        <th
-                                            scope="col"
-                                            class="px-3 py-3.5 text-left text-sm font-semibold text-blue-900"
-                                        >
-                                            Etat
-                                        </th>
-                                        <th
-                                            scope="col"
-                                            class="relative py-3.5 pl-3 pr-4 sm:pr-6"
-                                        >
-                                            <span class="sr-only">Edit</span>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody
-                                    class="divide-y divide-gray-200 bg-white"
-                                >
-                                    <% formations.forEach(function(f){%>
-                                    <tr id="<%= f.id %>">
-                                        <td
-                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-900 sm:pl-6"
-                                        >
-                                            <%= f.title %>
-                                        </td>
-                                        <td
-                                            class="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell"
-                                        >
-                                            <span class="font-mono font-bold"
-                                                ><%= f.students %></span
-                                            >
-                                            apprenants
-                                        </td>
-                                        <td
-                                            class="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 lg:table-cell"
-                                        >
-                                            <span class="font-mono font-bold"
-                                                ><%= f.groups %></span
-                                            >
-                                            groupes
-                                        </td>
-                                        <td
-                                            class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                                        >
-                                            <% if (f.state == "active") { %>
-                                            <span
-                                                class="inline-block px-2 leading-5 text-xs font-bold text-green-600 rounded-full bg-green-100 -ml-2"
-                                                >Active</span
-                                            >
-                                            <%}%> <% if (f.state == "ouvert") {
-                                            %>
-                                            <span
-                                                class="inline-block px-2 leading-5 text-xs font-bold text-blue-600 rounded-full bg-blue-100 -ml-2"
-                                                >Ouvert</span
-                                            >
-                                            <%}%> <% if (f.state == "archive") {
-                                            %>
-                                            <span
-                                                class="inline-block px-2 leading-5 text-xs font-bold text-amber-600 rounded-full bg-amber-100 -ml-2"
-                                                >Archive</span
-                                            >
-                                            <%}%>
-                                        </td>
-                                        <td
-                                            class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
-                                        >
-                                            <a
-                                                href="/admin/formation/<%= f.id %>"
-                                                class="px-2 py-1 rounded-md border border-gray-300 hover:text-blue-600 hover:bg-blue-200 text-gray-600"
-                                                >Afficher<span class="sr-only"
-                                                    >Afficher</span
-                                                ></a
-                                            >
-                                        </td>
-                                    </tr>
-
-                                    <%})%>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </main>
+                  <%})%>
+                </tbody>
+              </table>
             </div>
-        </div>
-    </body>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
 </html>
