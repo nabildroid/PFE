@@ -3,7 +3,6 @@ import { getGroups } from "./group";
 import { getInscriptions } from "./inscription";
 
 export async function getCategories() {
-
   return [
     "Sciences documentaires",
     "Langage de programmation",
@@ -80,7 +79,7 @@ export async function getAdminFormation(id) {
 
     const active = {
       id,
-      title: "PHP",
+      title: selected.nom,
       type: "active",
       groups,
     };
