@@ -15,4 +15,14 @@ router.get("/", async function (req, res, next) {
   });
 });
 
+router.get("/about", async function (req, res, next) {
+  res.render("about");
+});
+
+
+
+router.get("/contact", async function (req, res, next) {
+  res.render("contact");
+});
+
 export default router;
