@@ -76,7 +76,7 @@ export async function setPresent(id) {
   if (exists.length) {
     day = exists[0].id;
   } else {
-    const { results } = await DB("insert into journ(date) value (NOW())");
+    const { results } = await DB("insert into journ(date) values (NOW())");
     day = results.insertId;
   }
 
