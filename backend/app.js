@@ -67,6 +67,9 @@ app.listen(3000, () => {
   console.log(`listening to port 3000`);
 });
 
+
+
+
 export async function uploadFile(filePath, name, type) {
   const folders = { image: "images", pdf: "images" };
   const extention = { image: ".png", pdf: ".pdf" };

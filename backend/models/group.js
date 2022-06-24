@@ -45,10 +45,10 @@ export async function getAttestations(group) {
 
   if (!condidats.length) return [];
 
-  const { results: formations } = await DB(
+  const { results: students } = await DB(
     "SELECT * from formation JOIN conserne on conserne.formation = formation.id where conserne.etudiant = ?",
     [condidats[0].id]
   );
 
-  const [formation] = formations;
+  return students;
 }
