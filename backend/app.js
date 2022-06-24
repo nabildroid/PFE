@@ -91,8 +91,11 @@ export async function uploadFile(filePath, name, type) {
 export function filePath(name, type) {
   const folders = { image: "images", pdf: "images" };
   const extention = { image: ".png", pdf: ".pdf" };
-  const root = "/";
+  if (process.env.DB_USER) {
+    return `https://storage.googleapis.com/supernabil-86c2b.appspot.com/pfe/images/${name}.${extention[type]}`;
+  }
 
+  const root = "/";
   const outpath = path.join(root, folders[type], name + extention[type]);
   return outpath;
 }
