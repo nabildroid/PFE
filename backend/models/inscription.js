@@ -7,11 +7,12 @@ export async function createInscription(
   fonction,
   organisme,
   email,
-  tel
+  tel,
+  birth
 ) {
   const { results } = await DB(
-    "insert into etudiant(nom,mail,fonction,organisme) values(?,?,?,?)",
-    [name, email, fonction, organisme, tel]
+    "insert into etudiant(nom,mail,fonction,organisme,dnaissance) values(?,?,?,?,?)",
+    [name, email, fonction, organisme,birth]
   );
 
   await DB(

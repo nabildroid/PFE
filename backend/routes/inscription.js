@@ -18,10 +18,10 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/:id", (req, res) => {
-  const { name, fonction, organisme, email, tel } = req.body;
+  const { name, fonction, organisme, email, tel,birth } = req.body;
   const { id } = req.params;
 
-  createInscription(id, name, fonction, organisme, email, tel);
+  createInscription(id, name, fonction, organisme, email, tel,birth);
   res.redirect("/");
 
   // https://tailwindui.com/components/application-ui/overlays/modals
