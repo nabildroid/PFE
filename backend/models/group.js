@@ -38,17 +38,26 @@ export async function getInscriptionFromGroup(group) {
 }
 
 export async function getAttestations(group) {
-  const { results: condidats } = await DB(
-    "SELECT COUNT(present.id) as total, etudiant.nom,etudiant.mail,etudiant.fonction,etudiant.organisme,etudiant.id from present JOIN etudiant ON etudiant.id = present.etudiant where etudiant.groupe = ? group BY(etudiant.id) HAVING total > 1",
+  const { results: students } = await DB(
+    "SELECT COUNT(present.id) as total, etudiant.nom,etudiant.dnaissance,etudiant.mail,etudiant.fonction,etudiant.organisme,etudiant.id from present JOIN etudiant ON etudiant.id = present.etudiant where etudiant.groupe = ? group BY(etudiant.id) HAVING total > 0",
     [group]
   );
 
-  if (!condidats.length) return [];
+  if (!students.length) return [];
 
-  const { results: students } = await DB(
+  const { results: formations } = await DB(
     "SELECT * from formation JOIN conserne on conserne.formation = formation.id where conserne.etudiant = ?",
-    [condidats[0].id]
+    [students[0].id]
   );
 
-  return students;
+  const [formation] = formations;
+
+  return students.map(s=>({
+    name:s.nom,
+    birth:s.dnaissance,
+    title:formation.nom,
+    start:new Date(formation.dateDebut),
+    end:new Date(formation.dateDebut).getTime() + 1000 * 60 * 60 * 24 * formation.dure,
+  }))
+
 }

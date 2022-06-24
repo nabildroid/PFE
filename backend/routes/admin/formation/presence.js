@@ -42,29 +42,12 @@ router.get("/:gId/attestations", async (req, res) => {
   const groupId = req.params.gId;
 
   const students = await getAttestations(groupId);
-  const f = await createAttestations();
+  const f = await createAttestations(students);
 
   res.sendFile(f);
 });
 
-async function createAttestations() {
-  const students = [
-    {
-      name: "Lakrib Nabil",
-      birth: "10/11/2000",
-      start: "10/11/2022",
-      end: "15/11/2022",
-      title:"Presentation",
-    },
-    {
-      name: "Ikram dellici",
-      birth: "29/05/2001",
-      start: "10/11/2022",
-      end: "15/11/2022",
-      title:"Presentation",
-    },
-  ];
-
+async function createAttestations(students) {
   let template = createPDFTemplate(students);
 
   let options = {
@@ -133,15 +116,21 @@ function createPDFAttesationPage(s) {
 
   <div style="text-align:left;margin: 0 auto; width:80%">
     <div><i>Le Directeur du centre de recherche sur l’information scientifique et technique (CERIST) certifie que,</i></div>
-    <div>Monsieur, <p style="display:inline-block; margin:0 25px;">${s.name}</p></div>
-    <div>Né (e) le, <p style="display:inline-block; margin:0 25px;">${s.birth}</p></div>
-    <div style="margin: 16px 0px 0px 0px;">A suivi la session de formation intitulée: ${s.title}</div>
+    <div>Monsieur, <p style="display:inline-block; margin:0 25px;">${
+      s.name
+    }</p></div>
+    <div>Né (e) le, <p style="display:inline-block; margin:0 25px;">${
+      formatDate(s.birth)
+    }</p></div>
+    <div style="margin: 16px 0px 0px 0px;">A suivi la session de formation intitulée: ${
+      s.title
+    }</div>
 
-    <div>Qui s’est déroulée au CERIST du ${s.start} a ${s.end} </div>
+    <div>Qui s’est déroulée au CERIST du ${formatDate(s.start)} a ${formatDate(s.end)} </div>
     <div style="margin: 16px 0px 0px 0px;"><i>Cette attestation est délivrée pour servir et valoir ce que de droit.</i></div>
 
-    <div style="text-align:right;margin: 16px 0px 0px 0px;">Fait à Alger, le ${new Date().toDateString()}</div>
-    <div style="text-align:center;margin: 16px 0px 0px 0px;">P/le Directeur du Centre</div>
+    <div style="text-align:right;margin: 16px 0px 0px 0px;">Fait à Alger, le ${formatDate(new Date())}</div>
+    <div style="text-align:center;margin: 16px 0px 80px 0px;">P/le Directeur du Centre</div>
   </div>
   
   
@@ -151,4 +140,7 @@ function createPDFAttesationPage(s) {
   <div style="page-break-before: always;"></div>`;
 }
 
+function formatDate(d) {
+  return new Date(d).toISOString().split("T")[0];
+}
 export default router;
