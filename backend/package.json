@@ -8,6 +8,7 @@
     "dev": "nodemon --experimental-specifier-resolution=node app.js --inspect"
   },
   "dependencies": {
+    "@google-cloud/storage": "^6.2.0",
     "body-parser": "^1.20.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",

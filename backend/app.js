@@ -1,4 +1,3 @@
-import os from "os";
 import path from "path";
 import fs from "fs";
 
@@ -10,6 +9,10 @@ import indexRouter from "./routes";
 import inscriptionRouter from "./routes/inscription";
 import adminRouter from "./routes/admin";
 import loginRouter from "./routes/login";
+
+import { Storage } from "@google-cloud/storage";
+
+const storage = new Storage();
 
 const app = express();
 
@@ -67,14 +70,19 @@ app.listen(3000, () => {
   console.log(`listening to port 3000`);
 });
 
-
-
-
 export async function uploadFile(filePath, name, type) {
   const folders = { image: "images", pdf: "images" };
   const extention = { image: ".png", pdf: ".pdf" };
   const root = "public/";
 
+  if (process.env.DB_USER) {
+    const bucket = storage.bucket("supernabil-86c2b.appspot.com");
+    await bucket.upload(filePath, {
+      public: true,
+      destination: path.join("pfe", folders[type], name + extention[type]),
+    });
+    return;
+  }
   const outpath = path.join(root, folders[type], name + extention[type]);
 
   fs.copyFileSync(filePath, outpath);
