@@ -92,7 +92,7 @@ export function filePath(name, type) {
   const folders = { image: "images", pdf: "images" };
   const extention = { image: ".png", pdf: ".pdf" };
   if (process.env.DB_USER) {
-    return `https://storage.googleapis.com/supernabil-86c2b.appspot.com/pfe/images/${name}.${extention[type]}`;
+    return `https://storage.googleapis.com/supernabil-86c2b.appspot.com/pfe/images/${name}${extention[type]}`;
   }
 
   const root = "/";
