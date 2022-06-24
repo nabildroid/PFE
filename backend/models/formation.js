@@ -1,3 +1,4 @@
+import { filePath } from "../app";
 import DB from "../bdd";
 import { getGroups } from "./group";
 import { getInscriptions } from "./inscription";
@@ -17,12 +18,14 @@ export async function getCategories() {
 export async function getFormations() {
   const { results } = await DB("select * from formation");
 
-  const formations = results.map((f) => ({
-    id: f.id,
-    title: f.nom,
-    category: f.type,
-    image: "/images/formation.png",
-  }));
+  const formations = results
+    .filter((f) => !f.dateDebut && !f.dateFin)
+    .map((f) => ({
+      id: f.id,
+      title: f.nom,
+      category: f.type,
+      image: filePath(f.id,"image"),
+    }));
 
   const categories = [
     ...formations.reduce((acc, v) => acc.add(v.category), new Set()),
@@ -100,7 +103,7 @@ export async function getFormation(id) {
   return {
     id,
     title: formation.nom,
-    file: "https://drive.google.com/file/d/1XT3p9oPxaFxAbhtyiQOrURdSWoaGKB3B/view?usp=sharing",
+    file: filePath(id,"pdf"),
   };
 }
 

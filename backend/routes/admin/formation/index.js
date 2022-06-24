@@ -18,6 +18,7 @@ import {
 } from "../../../models/formation";
 import inscription from "./inscription";
 import presence from "./presence";
+import { uploadFile } from "../../../app";
 
 // create new Fromation
 router.get("/new", async (_, res) => {
@@ -43,6 +44,10 @@ router.post("/new", formationFilesUploader, async (req, res) => {
     duration,
     user
   );
+
+  const files = req.files;
+  uploadFile(files.image[0].path, id, "image");
+  uploadFile(files.pdf[0].path, id, "pdf");
 
   // move files to file with a name
   res.redirect("/admin#" + id);
@@ -79,12 +84,16 @@ router.get("/:id/edit", async (req, res) => {
   res.render("editFormation", { ...formation, categories });
 });
 
-router.post("/:id/edit",formationFilesUploader, async (req, res) => {
+router.post("/:id/edit", formationFilesUploader, async (req, res) => {
   const { id } = req.params;
 
   const { title, category, duration } = req.body;
   console.log(req.body);
   await updateFormation(id, { title, category, duration });
+
+  const files = req.files;
+  if (files.image?.length) uploadFile(files.image[0].path, id, "image");
+  if (files.pdf?.length) uploadFile(files.pdf[0].path, id, "pdf");
 
   res.redirect("/admin");
 });

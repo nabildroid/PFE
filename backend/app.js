@@ -1,6 +1,9 @@
+import os from "os";
+import path from "path";
+import fs from "fs";
+
 import express from "express";
 import session from "express-session";
-import path from "path";
 import logger from "morgan";
 
 import indexRouter from "./routes";
@@ -63,5 +66,24 @@ app.use(function (err, req, res, next) {
 app.listen(3000, () => {
   console.log(`listening to port 3000`);
 });
+
+export async function uploadFile(filePath, name, type) {
+  const folders = { image: "images", pdf: "images" };
+  const extention = { image: ".png", pdf: ".pdf" };
+  const root = "public/";
+
+  const outpath = path.join(root, folders[type], name + extention[type]);
+
+  fs.copyFileSync(filePath, outpath);
+}
+
+export function filePath(name, type) {
+  const folders = { image: "images", pdf: "images" };
+  const extention = { image: ".png", pdf: ".pdf" };
+  const root = "/";
+
+  const outpath = path.join(root, folders[type], name + extention[type]);
+  return outpath;
+}
 
 export default app;
